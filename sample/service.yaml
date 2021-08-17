@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-layu
+spec:
+  type: LoadBalancer
+  selector:
+    app: hello-layu
+  ports:
+  - port: 80
+    targetPort: 8888

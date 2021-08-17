@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-layu-deployment
+  labels:
+    app: hello-layu
+spec:
+  selector:
+    matchLabels:
+      app: hello-layu
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello-layu
+    spec:
+      containers:
+      - name: hello-layu
+        image: hello_layu:v1.0
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8888
