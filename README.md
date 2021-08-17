@@ -1,4 +1,4 @@
-# k8s
+# k8s安装脚本使用
 1. 准备一台centos系统，可以使用vmware虚拟机来搭建
 2. IP地址使用静态地址
 3. 同时设置host名，去掉vmwam默认生成的xxx.localhost，改成比如k8s-master这样的域名  
