@@ -31,9 +31,8 @@ sysctl --system
 yum install -y yum-utils
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install docker-ce docker-ce-cli containerd.io -y
-systemctl start docker
-systemctl enable docker
 
+systemctl start docker
 cat <<EOF >  /etc/docker/daemon.json
 {
     "registry-mirrors": ["https://registry.docker-cn.com", "https://docker.mirrors.ustc.edu.cn"]
@@ -43,6 +42,7 @@ EOF
 systemctl daemon-reload
 systemctl restart docker
 
+systemctl enable docker
 
 docker pull coredns/coredns:1.8.0
 docker tag 296a6d5035e2 registry.aliyuncs.com/google_containers/coredns:v1.8.0
@@ -92,5 +92,4 @@ kubectl -n kube-system describe $(kubectl -n kube-system get secret -n kube-syst
 #补充点(禁止master部署pod命令)：
 # kubectl taint nodes k8s node-role.kubernetes.io/master=true:NoSchedule
 
-# 查看 k8s 服务启动或者init 操作失败原因
-# journalctl -xefu kubelet
+#  kubectl describe pod -n kube-system calico-node-d7xjp
